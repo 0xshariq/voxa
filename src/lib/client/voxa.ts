@@ -17,6 +17,26 @@ import type { BatchManager } from '../features/batch/manager.js';
 import type { TokenManager } from '../features/token/manager.js';
 
 class Voxa extends HttpMethods {
+    private _graphqlManager?: import('../features/graphql/manager.js').GraphQLManager;
+    /**
+     * GraphQL feature access
+     */
+    public async graphql<T = any>(options: import('../features/graphql/manager.js').GraphQLRequest): Promise<import('../features/graphql/manager.js').GraphQLResponse<T>> {
+        // Lazy-load and initialize GraphQLManager if not already
+        if (!this.config.graphql || !this.config.graphql.enabled) {
+            throw new Error('GraphQL is not enabled in Voxa config');
+        }
+        if (!this._graphqlManager) {
+            const { GraphQLManager } = await import('../features/graphql/manager.js');
+            // Use a custom post function for GraphQL to avoid baseURL concatenation
+            const postFn = async (url: string, body: any, config?: VoxaConfig) => {
+                // Always use the url as absolute for GraphQL
+                return await this.request('POST', url, body, { ...config, baseURL: undefined });
+            };
+            this._graphqlManager = new GraphQLManager(this.config, postFn);
+        }
+        return this._graphqlManager.request<T>(options);
+    }
     /**
      * Implements the core request method for all HTTP verbs
      */
@@ -61,6 +81,9 @@ class Voxa extends HttpMethods {
 
     constructor(config: VoxaConfig = {}) {
         super();
+        // Strictly enforce retry count as 5, overwriting any user value
+        this.config = mergeConfig(this.config, config);
+        this.config.retry = { ...(this.config.retry || {}), count: 5 };
         this.config = mergeConfig(this.config, config);
         this.interceptorManager = new InterceptorManager();
         this.deduplicationManager = new DeduplicationManager();
@@ -69,10 +92,13 @@ class Voxa extends HttpMethods {
         this.metadataManager = new MetadataManager();
         // Initialize ErrorClassifier automatically if config.errors is provided
         if (config.errors) {
-            // @ts-ignore: dynamic import for demonstration
-            const { ErrorClassifier } = require('../features/errors/classifier');
-            this.errorClassifier = new ErrorClassifier(config.errors);
+            // Use dynamic import for ESM compatibility
+            import('../features/errors/classifier.js').then(({ ErrorClassifier }) => {
+                this.errorClassifier = new ErrorClassifier(config.errors);
+            });
         }
+        // GraphQLManager will be lazy-loaded in the graphql() method
+
     }
     classifyError(error: unknown): string | undefined {
         if (this.errorClassifier) {
@@ -132,14 +158,6 @@ class Voxa extends HttpMethods {
     static async options<T = any>(url: string, config: VoxaConfig = {}): Promise<VoxaResponse<T>> {
         const instance = new Voxa(config);
         return instance.options<T>(url, config);
-    }
-    static async trace<T = any>(url: string, config: VoxaConfig = {}): Promise<VoxaResponse<T>> {
-        const instance = new Voxa(config);
-        return instance.trace<T>(url, config);
-    }
-    static async connect<T = any>(url: string, data?: any, config: VoxaConfig = {}): Promise<VoxaResponse<T>> {
-        const instance = new Voxa(config);
-        return instance.connect<T>(url, data, config);
     }
 }
 

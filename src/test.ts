@@ -19,6 +19,71 @@ interface User {
 }
 
 async function testVoxa() {
+    const test = create({
+        baseURL: 'https://jsonplaceholder.typicode.com',
+        timeout: 5000,
+        cache: { storage: 'memory', enabled: true },
+        cancel: { enabled: true },
+        offline: { enabled: true },
+        token: { enabled: true },
+        errors: { enabled: true },
+        retry: { count: 3, delay: 1000 },
+        batch: { enabled: true },
+        circuitBreaker: { enabled: true },
+        metrics: { enabled: true },
+        rate: { enabled: true },
+        schema: { enabled: true },
+        graphql: {
+            enabled: true,
+            endpoint: 'https://graphqlzero.almansi.me/api',
+            logErrors: true
+        }
+    });
+
+    // Test 10: All HTTP methods
+    console.log('\n--- Test 10: All HTTP Methods ---');
+    try {
+        // GET
+        const getRes = await test.get<Post>('/posts/1');
+        console.log('GET:', (await getRes.json()).id);
+        // POST
+        const postRes = await test.post<Post>('/posts', { title: 'New', body: 'Body', userId: 1 });
+        console.log('POST:', (await postRes.json()).id);
+        // PUT
+        const putRes = await test.put<Post>('/posts/1', { title: 'Updated', body: 'Body', userId: 1 });
+        console.log('PUT:', (await putRes.json()).id);
+        // PATCH
+        const patchRes = await test.patch<Post>('/posts/1', { title: 'Patched' });
+        console.log('PATCH:', (await patchRes.json()).id);
+        // DELETE
+        const deleteRes = await test.delete<Post>('/posts/1');
+        console.log('DELETE:', deleteRes.status);
+        // HEAD
+        const headRes = await test.head('/posts');
+        console.log('HEAD:', headRes.status);
+        // OPTIONS
+        const optionsRes = await test.options('/posts');
+        console.log('OPTIONS:', optionsRes.status);
+    } catch (error) {
+        console.error('\u274c HTTP methods test failed:', error);
+    }
+
+    // Test 11: GraphQL support
+    console.log('\n--- Test 11: GraphQL Support ---');
+    try {
+        const gqlQuery = `query GetUser($id: ID!) { user(id: $id) { id name email } }`;
+        const gqlRes = await test.graphql({
+            query: gqlQuery,
+            variables: { id: '1' },
+            url: 'https://graphqlzero.almansi.me/api'
+        });
+        if (gqlRes.errors) {
+            console.error('GraphQL errors:', gqlRes.errors);
+        }
+        console.log('GraphQL user:', gqlRes.data.user);
+    } catch (error) {
+        console.error('\u274c GraphQL test failed:', error);
+    }
     console.log('=== Testing Voxa HTTP Client with Advanced Features ===\n');
     // Feature Managers Setup
     const cancelManager = new CancelManager({ enabled: true });

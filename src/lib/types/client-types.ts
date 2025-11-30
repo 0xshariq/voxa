@@ -24,6 +24,20 @@ export interface VoxaConfig {
     rate?: RateLimiterConfig;
     schema?: SchemaValidatorConfig;
     cancel?: CancelManagerConfig;
+    graphql?: GraphQLConfig;
+}
+
+/**
+ * GraphQL configuration for Voxa
+ */
+export interface GraphQLConfig {
+    enabled?: boolean;
+    endpoint?: string;
+    headers?: Record<string, string>;
+    logErrors?: boolean;
+    timeout?: number;
+    cache?: boolean;
+    retry?: number;
 }
 
 /**
@@ -143,7 +157,7 @@ export interface CacheAdapter {
 export interface CacheConfig {
     enabled?: boolean;              // Enable caching (default: false)
     ttl?: number;                   // Time to live in ms (default: 300000 = 5 minutes)
-    storage?: 'memory' | 'redis' | 'custom';   // Storage type (default: 'memory')
+    storage?: 'memory' | 'redis' | 'custom' | 'memory';   // Storage type (default: 'memory')
     adapter?: CacheAdapter;         // Custom cache adapter (required if storage='custom')
     redis?: {                       // Redis configuration (optional, only for storage='redis')
         host?: string;              // Redis host (default: 'localhost')
