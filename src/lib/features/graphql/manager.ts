@@ -40,8 +40,8 @@ export class GraphQLManager {
     if (typeof this.gqlConfig.cache === 'object') {
       postConfig.cache = this.gqlConfig.cache;
     }
-    if (typeof this.gqlConfig.retry === 'object') {
-      postConfig.retry = this.gqlConfig.retry;
+    if (typeof this.config.retry === 'object') {
+      postConfig.retry = this.config.retry;
     }
     const response = await this.post(endpoint, {
       query: options.query,

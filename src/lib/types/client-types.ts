@@ -29,6 +29,7 @@ export interface VoxaConfig {
 
 /**
  * GraphQL configuration for Voxa
+ * (retry is inherited from VoxaConfig.retry)
  */
 export interface GraphQLConfig {
     enabled?: boolean;
@@ -37,7 +38,6 @@ export interface GraphQLConfig {
     logErrors?: boolean;
     timeout?: number;
     cache?: boolean;
-    retry?: number;
 }
 
 /**

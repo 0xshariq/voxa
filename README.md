@@ -20,7 +20,6 @@ A modern, feature-rich HTTP client built on Native Fetch API with advanced capab
 - 📡 **OfflineQueueManager** - Offline request queueing and retry when online
 - 🪪 **TokenManager** - OAuth2/JWT/Bearer token management with pluggable storage
 
-
 ## 📦 Installation
 
 ```bash
@@ -38,22 +37,22 @@ yarn add @0xshariq/voxa
 Create a client instance to reuse configuration and features:
 
 ```typescript
-import voxa from '@0xshariq/voxa';
+import voxa from "@0xshariq/voxa";
 
 const api = voxa.create({
-  baseURL: 'https://api.example.com',
+  baseURL: "https://api.example.com",
   timeout: 5000,
   // ...other options
 });
 
 // Make requests
-const response = await api.get('/users/1');
+const response = await api.get("/users/1");
 const user = await response.json();
 
 // You can also use other HTTP methods:
-await api.post('/users', { name: 'John' });
-await api.put('/users/1', { name: 'Jane' });
-await api.delete('/users/1');
+await api.post("/users", { name: "John" });
+await api.put("/users/1", { name: "Jane" });
+await api.delete("/users/1");
 ```
 
 ### Using Voxa Without an Instance (Static Methods)
@@ -61,15 +60,15 @@ await api.delete('/users/1');
 Call static methods directly for one-off requests:
 
 ```typescript
-import { Voxa } from '@0xshariq/voxa';
+import { Voxa } from "@0xshariq/voxa";
 
-const response = await Voxa.get('https://api.example.com/users/1');
+const response = await Voxa.get("https://api.example.com/users/1");
 const user = await response.json();
 
 // Other static methods:
-await Voxa.post('https://api.example.com/users', { name: 'John' });
-await Voxa.put('https://api.example.com/users/1', { name: 'Jane' });
-await Voxa.delete('https://api.example.com/users/1');
+await Voxa.post("https://api.example.com/users", { name: "John" });
+await Voxa.put("https://api.example.com/users/1", { name: "Jane" });
+await Voxa.delete("https://api.example.com/users/1");
 ```
 
 Use an instance for advanced features (caching, queueing, interceptors, etc.), or static methods for simple requests.
@@ -89,11 +88,16 @@ const api = voxa.create({
     Authorization: "Bearer <token>", // string
   },
   retry: {
-    count: 3, // number (max retries)
+    count: 5, // number (max retries, always 5)
     delay: 1000, // number (ms, initial delay)
     exponentialBackoff: true, // boolean
     maxRetry: 10000, // number (ms, max delay)
     statusCodes: [429, 500, 502, 503, 504], // number[]
+  },
+  graphql: {
+    enabled: true, // boolean
+    endpoint: "https://graphqlzero.almansi.me/api", // string
+    logErrors: true, // boolean
   },
   cache: {
     enabled: true, // boolean
@@ -221,7 +225,6 @@ const api = voxa.create({
   },
 });
 ```
-
 
 ### Response Caching
 
