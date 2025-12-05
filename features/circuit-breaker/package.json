@@ -1,0 +1,37 @@
+{
+    "name": "@0xshariq/voxa-circuit-breaker",
+    "version": "1.0.0",
+    "description": "Circuit breaker for Voxa HTTP Client",
+    "keywords": [
+        "voxa",
+        "circuit-breaker",
+        "resilience"
+    ],
+    "homepage": "https://github.com/0xshariq/voxa#readme",
+    "bugs": {
+        "url": "https://github.com/0xshariq/voxa/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/0xshariq/voxa.git",
+        "directory": "voxa/features/circuit-breaker"
+    },
+    "license": "MIT",
+    "author": "Sharique Chaudhary",
+    "type": "module",
+    "main": "./dist/circuit-breaker.js",
+    "types": "./dist/types.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "clean": "rm -rf dist"
+    },
+    "peerDependencies": {
+        "@0xshariq/voxa-core": "^2.4.1"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

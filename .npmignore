@@ -1,0 +1,8 @@
+node_modules/
+src/
+pnpm-lock.yaml
+tsconfig.json
+docs/
+.env.*
+*.md
+scripts/

@@ -1,0 +1,76 @@
+{
+  "name": "@0xshariq/voxa-core",
+  "version": "2.4.1",
+  "description": "Core HTTP client library built on native Fetch API with essential features like caching, retry, and request deduplication.",
+  "keywords": [
+    "http",
+    "http-client",
+    "fetch",
+    "axios",
+    "request",
+    "cache",
+    "retry",
+    "typescript"
+  ],
+  "homepage": "https://github.com/0xshariq/voxa#readme",
+  "bugs": {
+    "url": "https://github.com/0xshariq/voxa/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xshariq/voxa.git",
+    "directory": "packages/voxa"
+  },
+  "license": "MIT",
+  "author": "Sharique Chaudhary",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/lib/client/voxa.d.ts",
+      "import": "./dist/lib/client/voxa.js"
+    },
+    "./cache": {
+      "types": "./dist/lib/features/cache/manager.d.ts",
+      "import": "./dist/lib/features/cache/manager.js"
+    },
+    "./streaming": {
+      "types": "./dist/lib/features/streaming-images/manager.d.ts",
+      "import": "./dist/lib/features/streaming-images/manager.js"
+    },
+    "./http2": {
+      "types": "./dist/lib/features/http2-push/manager.d.ts",
+      "import": "./dist/lib/features/http2-push/manager.js"
+    },
+    "./types": {
+      "types": "./dist/lib/types/client-types.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "node scripts/build.js",
+    "clean": "rm -rf dist",
+    "test": "tsx src/test.ts",
+    "prepublishOnly": "pnpm run clean && pnpm run build",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "terser": "^5.44.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}

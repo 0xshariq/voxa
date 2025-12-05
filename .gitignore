@@ -1,0 +1,8 @@
+node_modules/
+dist/
+dump.rdb
+.env
+FEATURES.md
+LANGUAGE_AGNOSTIC.md
+IMPROVEMENTS.md
+scripts/
