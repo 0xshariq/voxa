@@ -1,12 +1,12 @@
 // StreamingImageManager: Handles streaming upload/download for images
 
-import type { VoxaConfig, ImagePayload, StreamingImageOptions } from './types.js';
+import type { ImagePayload, StreamingImageOptions } from './types.js';
 import { PassThrough } from 'stream';
 const isNode = typeof process !== 'undefined' && process.versions != null && process.versions.node != null;
 
 export class StreamingImageManager {
   private options: StreamingImageOptions;
-  constructor(config: VoxaConfig = {}) {
+  constructor(config: { streamingImages?: StreamingImageOptions } = {}) {
     this.options = config.streamingImages || {};
   }
 

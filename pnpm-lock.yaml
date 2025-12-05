@@ -21,6 +21,66 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
 
+  features/batch:
+    dependencies:
+      '@0xshariq/voxa-core':
+        specifier: workspace:*
+        version: link:../..
+
+  features/cancel:
+    dependencies:
+      '@0xshariq/voxa-core':
+        specifier: workspace:*
+        version: link:../..
+
+  features/circuit-breaker:
+    dependencies:
+      '@0xshariq/voxa-core':
+        specifier: workspace:*
+        version: link:../..
+
+  features/graphql:
+    dependencies:
+      '@0xshariq/voxa-core':
+        specifier: workspace:*
+        version: link:../..
+
+  features/http2:
+    dependencies:
+      '@0xshariq/voxa-core':
+        specifier: workspace:*
+        version: link:../..
+
+  features/metrics:
+    dependencies:
+      '@0xshariq/voxa-core':
+        specifier: workspace:*
+        version: link:../..
+
+  features/offline:
+    dependencies:
+      '@0xshariq/voxa-core':
+        specifier: workspace:*
+        version: link:../..
+
+  features/streaming-images:
+    dependencies:
+      '@0xshariq/voxa-core':
+        specifier: workspace:*
+        version: link:../..
+
+  features/streaming-videos:
+    dependencies:
+      '@0xshariq/voxa-core':
+        specifier: workspace:*
+        version: link:../..
+
+  features/token:
+    dependencies:
+      '@0xshariq/voxa-core':
+        specifier: workspace:*
+        version: link:../..
+
 packages:
 
   '@esbuild/aix-ppc64@0.27.1':

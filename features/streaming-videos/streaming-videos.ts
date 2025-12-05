@@ -1,11 +1,11 @@
 // StreamingVideoManager: Handles streaming upload/download for videos
-import type { VoxaConfig, VideoPayload, StreamingVideoOptions } from './types.js';
+import type { VideoPayload, StreamingVideoOptions } from './types.js';
 import { PassThrough } from 'stream';
 const isNode = typeof process !== 'undefined' && process.versions != null && process.versions.node != null;
 
 export class StreamingVideoManager {
   private options: StreamingVideoOptions;
-  constructor(config: VoxaConfig = {}) {
+  constructor(config: { streamingVideos?: StreamingVideoOptions } = {}) {
     this.options = config.streamingVideos || {};
   }
 

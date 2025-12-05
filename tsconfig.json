@@ -25,5 +25,5 @@
     "importsNotUsedAsValues": "remove"
   },
   "include": ["src/**/*"],
-  "exclude": ["../node_modules", "../dist", "**/*.spec.ts", "**/*.test.ts", "src/test.ts"]
+  "exclude": ["node_modules", "dist", "**/*.spec.ts", "**/*.test.ts", "src/test.ts"]
 }

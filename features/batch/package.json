@@ -13,6 +13,6 @@
   "types": "./dist/types.d.ts",
   "files": ["dist"],
   "scripts": {"build": "tsc", "clean": "rm -rf dist"},
-  "peerDependencies": {"@0xshariq/voxa-core": "^2.4.1"},
+  "peerDependencies": {"@0xshariq/voxa-core": "workspace:*"},
   "publishConfig": {"access": "public"}
 }

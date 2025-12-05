@@ -30,7 +30,7 @@
     "clean": "rm -rf dist"
   },
   "peerDependencies": {
-    "@0xshariq/voxa-core": "^2.4.1"
+    "@0xshariq/voxa-core": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

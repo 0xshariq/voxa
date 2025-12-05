@@ -1,5 +1,6 @@
 // GraphQLManager: Handles GraphQL queries for Voxa
 import type { GraphQLConfig } from './types.js';
+import type { VoxaConfig, VoxaResponse } from '@0xshariq/voxa-core';
 
 export interface GraphQLRequest {
   query: string;
