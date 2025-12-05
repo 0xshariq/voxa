@@ -1,4 +1,4 @@
-# Voxa HTTP Client
+<h1 align="center">Voxa HTTP Client</h1>
 
 <p align="center">
   <em>Modern, feature-rich HTTP client for Node.js and browsers, built on the native Fetch API. Modular architecture with separate feature packages for optimal bundle size.</em>
@@ -45,7 +45,8 @@ Voxa is split into multiple packages:
 
 | Feature                           |    Voxa     |  Axios   |  Fetch   |    ky    |     Got     | node-fetch |
 | --------------------------------- | :---------: | :------: | :------: | :------: | :---------: | :--------: |
-| **Bundle Size**                   | 140KB-372KB |  ~13KB   |   0KB    |  ~11KB   |    ~45KB    |    ~6KB    |
+| **Bundle Size (Minified)**        |   21 KB     | 32.1 KB  |   0KB    | 14.6 KB  |   180 KB    |   18 KB    |
+| **Bundle Size (Gzipped)**         |   5.8 KB    | 12.1 KB  |   0KB    |  4.8 KB  |    52 KB    |   6.5 KB   |
 | **Dependencies**                  |      0      |    4     |    0     |    0     |     15      |     0      |
 | **Modular Architecture**          |     ✅      |    ❌    |    ❌    |    ❌    |     ❌      |     ❌     |
 | **TypeScript First**              |     ✅      |    ✅    |    ✅    |    ✅    |     ✅      |     ⚠️     |

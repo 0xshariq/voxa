@@ -1,7 +1,7 @@
 {
   "name": "@0xshariq/voxa-core",
   "version": "1.0.0",
-  "description": "Core HTTP client library built on native Fetch API with essential features like caching, retry, and request deduplication.",
+  "description": "Lightweight (21KB minified, 5.8KB gzipped) HTTP client library built on native Fetch API with essential features like caching, retry, and request deduplication.",
   "keywords": [
     "http",
     "http-client",
