@@ -1,6 +1,6 @@
 {
     "name": "@0xshariq/voxa-token",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Token management for Voxa HTTP Client",
     "keywords": [
         "voxa",

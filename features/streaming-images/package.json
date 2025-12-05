@@ -1,6 +1,6 @@
 {
   "name": "@0xshariq/voxa-streaming-images",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Image streaming upload/download features for Voxa HTTP Client",
   "keywords": [
     "voxa",
@@ -24,7 +24,9 @@
   "type": "module",
   "main": "./dist/streaming-images.js",
   "types": "./dist/types.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist"

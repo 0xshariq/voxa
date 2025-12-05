@@ -1,10 +1,19 @@
 {
   "name": "@0xshariq/voxa-streaming-videos",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Video streaming upload/download features for Voxa HTTP Client",
-  "keywords": ["voxa", "streaming", "video", "upload", "download", "http-client"],
+  "keywords": [
+    "voxa",
+    "streaming",
+    "video",
+    "upload",
+    "download",
+    "http-client"
+  ],
   "homepage": "https://github.com/0xshariq/voxa#readme",
-  "bugs": {"url": "https://github.com/0xshariq/voxa/issues"},
+  "bugs": {
+    "url": "https://github.com/0xshariq/voxa/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/0xshariq/voxa.git",
@@ -15,7 +24,9 @@
   "type": "module",
   "main": "./dist/streaming-videos.js",
   "types": "./dist/types.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist"
@@ -23,5 +34,7 @@
   "peerDependencies": {
     "@0xshariq/voxa-core": "workspace:*"
   },
-  "publishConfig": {"access": "public"}
+  "publishConfig": {
+    "access": "public"
+  }
 }
