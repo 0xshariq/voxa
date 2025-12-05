@@ -1,6 +1,6 @@
 {
   "name": "@0xshariq/voxa-batch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Request batching for Voxa HTTP Client",
   "keywords": ["voxa", "batch", "batching", "http-client"],
   "homepage": "https://github.com/0xshariq/voxa#readme",
