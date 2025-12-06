@@ -1,5 +1,6 @@
 import { DeduplicationConfig } from "../../types/client-types.js";
 import { logSafe } from '../../client/logging.js';
+import { DEFAULT_CACHE_TTL_MS } from '../../utils/constants.js';
 
 /**
  * Request Deduplication Manager
@@ -12,7 +13,7 @@ export class DeduplicationManager {
     private cleanupInterval: NodeJS.Timeout | null = null;
 
     constructor(config: DeduplicationConfig = {}) {
-        this.TTL = typeof config.ttl === 'number' ? config.ttl : 300000;
+        this.TTL = typeof config.ttl === 'number' ? config.ttl : DEFAULT_CACHE_TTL_MS;
         this.enabled = config.enabled !== false;
         // Auto cleanup every minute if enabled
         if (this.enabled) {

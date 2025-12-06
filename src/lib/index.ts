@@ -10,6 +10,11 @@
 export { Voxa } from './client/voxa.js';
 export { default } from './client/voxa.js';
 
+// Export utilities for feature packages
+export * from './utils/streaming.js';
+export * from './utils/constants.js';
+export * from './utils/validation.js';
+
 // Export types (no runtime cost)
 export type {
     VoxaConfig,

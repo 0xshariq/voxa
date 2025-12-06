@@ -236,8 +236,6 @@ See [MIGRATION.md](./MIGRATION.md) for detailed migration instructions from v1.x
 - No breaking changes
 - Retry and cache improvements are backward compatible
 
-### 1.x.x → 2.0.x
-See [MIGRATION.md](./MIGRATION.md) for detailed breaking changes and migration path.
 
 ---
 

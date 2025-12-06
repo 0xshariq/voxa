@@ -11,7 +11,28 @@ import { HttpMethods } from './http-methods.js';
 import type { SchemaValidator } from '../features/schema/validator.js';
 import type { RateLimiter } from '../features/rate/limiter.js';
 import type { ErrorClassifier } from '../features/errors/classifier.js';
+import { DEFAULT_REQUEST_EXPIRY_MS, DEFAULT_TIMEOUT_MS, DEFAULT_HEADERS } from '../utils/constants.js';
 
+/**
+ * Voxa - Modern, lightweight HTTP client for Node.js and browser
+ * 
+ * @example
+ * ```typescript
+ * import Voxa from '@0xshariq/voxa-core';
+ * 
+ * const client = new Voxa({
+ *   baseURL: 'https://api.example.com',
+ *   timeout: 5000,
+ *   cache: { enabled: true, ttl: 300000 }
+ * });
+ * 
+ * const response = await client.get('/users');
+ * console.log(response.data);
+ * ```
+ * 
+ * @class
+ * @extends HttpMethods
+ */
 class Voxa extends HttpMethods {
         /**
          * Voxa client version
@@ -44,7 +65,7 @@ class Voxa extends HttpMethods {
     protected async request<T = any>(method: HttpMethod, endpoint: string, data: any, config: VoxaConfig = {}): Promise<VoxaResponse<T>> {
         const mergedConfig = mergeConfig(this.config, config);
         const now = Date.now();
-        const expiryMs = 300000;
+        const expiryMs = DEFAULT_REQUEST_EXPIRY_MS;
         // Allow user to inject their own requestId or metadata for tracing
         let userRequestId = (config as any)?.requestId;
         let userMetadata = (config as any)?.metadata;
@@ -157,10 +178,8 @@ class Voxa extends HttpMethods {
     private rateLimiter?: RateLimiter;
     private errorClassifier?: ErrorClassifier;
     private config: VoxaConfig = {
-        timeout: 5000,
-        headers: {
-            'Content-Type': 'application/json'
-        },
+        timeout: DEFAULT_TIMEOUT_MS,
+        headers: { ...DEFAULT_HEADERS },
         errors: { enabled: true }
     };
     private interceptorManager: InterceptorManager;
@@ -238,16 +257,46 @@ class Voxa extends HttpMethods {
     getQueueStats() { return this.queueManager.getStats(); }
     getDeduplicationStats() { return this.deduplicationManager.getStats(); }
     getMetadataStats() { return this.metadataManager.getStats(); }
+    
+    /**
+     * Get metadata for a specific request by ID
+     * @param requestId - Unique request identifier
+     * @returns Request metadata or undefined if not found
+     */
     getRequestMetadata(requestId: string): RequestMetadata | undefined {
         return this.metadataManager.get(requestId);
     }
+    
+    /**
+     * Clear all cached responses
+     */
     async clearCache() { await this.cacheManager.clear(); }
+    
+    /**
+     * Clear all queued requests
+     */
     clearQueue() { this.queueManager.clear(); }
-    destroy() {
+    
+    /**
+     * Destroy and cleanup all managers and resources
+     * Call this when you're done with the Voxa instance to prevent memory leaks
+     */
+    async destroy() {
+        // Cleanup all managers
+        await this.cacheManager.dispose();
+        await this.queueManager.dispose();
         this.deduplicationManager.destroy();
         this.interceptorManager.clear();
         this.metadataManager.clear();
     }
+    
+    /**
+     * Static GET request convenience method
+     * @template T Response data type
+     * @param url - Request URL
+     * @param config - Configuration options
+     * @returns Promise resolving to VoxaResponse
+     */
     static async get<T = any>(url: string, config: VoxaConfig = {}): Promise<VoxaResponse<T>> {
         const instance = new Voxa(config);
         return instance.get<T>(url, config);

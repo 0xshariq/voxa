@@ -1,7 +1,7 @@
-
 import type { HttpMethod, VoxaConfig } from '../types/client-types.js';
 import { RetryManager } from '../features/retry/manager.js';
 import { isPrivateIp, isValidUrl, filterHeaders } from './security.js';
+import { DEFAULT_TIMEOUT_MS } from '../utils/constants.js';
 
 /**
  * Dispatches the actual HTTP request using Fetch API
@@ -39,7 +39,7 @@ export async function dispatchRequest(
     const maxAttempts = retryConfig.count + 1;
     for (let attempt = 0; attempt < maxAttempts; attempt++) {
         const abortController = new AbortController();
-        const timeout = config.timeout || 5000;
+        const timeout = config.timeout || DEFAULT_TIMEOUT_MS;
         const timeoutId = setTimeout(() => abortController.abort(), timeout);
         // Use provided signal if present, otherwise use our own
         const effectiveSignal = signal || abortController.signal;

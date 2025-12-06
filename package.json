@@ -41,13 +41,17 @@
       "types": "./dist/lib/features/cache/manager.d.ts",
       "import": "./dist/lib/features/cache/manager.js"
     },
-    "./streaming": {
-      "types": "./dist/lib/features/streaming-images/manager.d.ts",
-      "import": "./dist/lib/features/streaming-images/manager.js"
+    "./utils/streaming": {
+      "types": "./dist/lib/utils/streaming.d.ts",
+      "import": "./dist/lib/utils/streaming.js"
     },
-    "./http2": {
-      "types": "./dist/lib/features/http2-push/manager.d.ts",
-      "import": "./dist/lib/features/http2-push/manager.js"
+    "./utils/constants": {
+      "types": "./dist/lib/utils/constants.d.ts",
+      "import": "./dist/lib/utils/constants.js"
+    },
+    "./utils/validation": {
+      "types": "./dist/lib/utils/validation.d.ts",
+      "import": "./dist/lib/utils/validation.js"
     },
     "./types": {
       "types": "./dist/lib/types/client-types.d.ts"

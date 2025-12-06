@@ -1,6 +1,7 @@
 import type { CacheConfig, CacheEntry, CacheAdapter } from '../../types/client-types.js';
 import { warnSafe, logSafe, errorSafe } from '../../client/logging.js';
 import { FileStorage } from './file-storage.js';
+import { DEFAULT_CACHE_TTL_MS } from '../../utils/constants.js';
 
 /**
  * Cache Manager for storing and retrieving cached responses
@@ -26,7 +27,7 @@ export class CacheManager {
     constructor(config: CacheConfig = {}) {
         this.config = {
             enabled: config.enabled ?? false,
-            ttl: config.ttl ?? 300000, // 5 minutes default
+            ttl: config.ttl ?? DEFAULT_CACHE_TTL_MS, // 5 minutes default
             storage: config.storage ?? 'memory',
             ...config
         };
@@ -136,7 +137,7 @@ export class CacheManager {
     async set(key: string, response: Response, requestId: string, ttl?: number): Promise<void> {
         if (!this.config.enabled) return;
 
-        const cacheTTL = ttl || this.config.ttl || 300000;
+        const cacheTTL = ttl || this.config.ttl || DEFAULT_CACHE_TTL_MS;
         const timestamp = Date.now();
         const entry: CacheEntry = {
             response: response.clone(),
