@@ -5,4 +5,31 @@ dump.rdb
 FEATURES.md
 LANGUAGE_AGNOSTIC.md
 IMPROVEMENTS.md
+TESTING_GUIDE.md
 scripts/
+
+# Test coverage
+coverage/
+.nyc_output/
+*.lcov
+
+# Testing
+__tests__/
+*.test.ts
+*.spec.ts
+test-results/
+
+# Build artifacts
+*.tsbuildinfo
+.cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
