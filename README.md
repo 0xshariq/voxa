@@ -45,7 +45,7 @@ Voxa is split into multiple packages:
 
 | Feature                           |    Voxa     |  Axios   |  Fetch   |    ky    |     Got     | node-fetch |
 | --------------------------------- | :---------: | :------: | :------: | :------: | :---------: | :--------: |
-| **Bundle Size (Minified)**        |   21 KB     | 32.1 KB  |   0KB    | 14.6 KB  |   180 KB    |   18 KB    |
+| **Bundle Size (Minified)**        |    21 KB    | 32.1 KB  |   0KB    | 14.6 KB  |   180 KB    |   18 KB    |
 | **Bundle Size (Gzipped)**         |   5.8 KB    | 12.1 KB  |   0KB    |  4.8 KB  |    52 KB    |   6.5 KB   |
 | **Dependencies**                  |      0      |    4     |    0     |    0     |     15      |     0      |
 | **Modular Architecture**          |     ✅      |    ❌    |    ❌    |    ❌    |     ❌      |     ❌     |
@@ -502,7 +502,7 @@ await streamingImages.upload(
   (sentBytes, totalBytes) => {
     const percentage = (sentBytes / totalBytes) * 100;
     console.log(`Upload progress: ${percentage.toFixed(2)}%`);
-  }
+  },
 );
 
 // Download video with progress
@@ -513,7 +513,7 @@ const response = await streamingVideos.download(
   {},
   (receivedBytes, totalBytes) => {
     console.log(`Downloaded: ${receivedBytes}/${totalBytes} bytes`);
-  }
+  },
 );
 
 const blob = await response.blob();
