@@ -1,6 +1,6 @@
 {
   "name": "@voxa-http/voxa",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "Lightweight HTTP client library built on native Fetch API with essential features like caching, retry, and request deduplication.",
   "keywords": [
     "http",
