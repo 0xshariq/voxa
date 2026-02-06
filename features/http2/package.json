@@ -1,5 +1,5 @@
 {
-  "name": "@0xshariq/voxa-http2",
+  "name": "@voxa-http/voxa-http2",
   "version": "1.0.0",
   "description": "HTTP/2 Server Push features for Voxa HTTP Client",
   "keywords": [
@@ -27,9 +27,6 @@
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist"
-  },
-  "peerDependencies": {
-    "@0xshariq/voxa-core": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

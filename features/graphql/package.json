@@ -1,5 +1,5 @@
 {
-  "name": "@0xshariq/voxa-graphql",
+  "name": "@voxa-http/voxa-graphql",
   "version": "1.0.0",
   "description": "GraphQL support for Voxa HTTP Client",
   "keywords": ["voxa", "graphql", "http-client"],
@@ -19,9 +19,6 @@
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist"
-  },
-  "peerDependencies": {
-    "@0xshariq/voxa-core": "workspace:*"
   },
   "publishConfig": {"access": "public"}
 }

@@ -1,18 +1,35 @@
 {
-  "name": "@0xshariq/voxa-batch",
+  "name": "@voxa-http/voxa-batch",
   "version": "1.0.1",
   "description": "Request batching for Voxa HTTP Client",
-  "keywords": ["voxa", "batch", "batching", "http-client"],
+  "keywords": [
+    "voxa",
+    "batch",
+    "batching",
+    "http-client"
+  ],
   "homepage": "https://github.com/0xshariq/voxa#readme",
-  "bugs": {"url": "https://github.com/0xshariq/voxa/issues"},
-  "repository": {"type": "git", "url": "git+https://github.com/0xshariq/voxa.git", "directory": "voxa/features/batch"},
+  "bugs": {
+    "url": "https://github.com/0xshariq/voxa/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xshariq/voxa.git",
+    "directory": "voxa/features/batch"
+  },
   "license": "MIT",
   "author": "Sharique Chaudhary",
   "type": "module",
   "main": "./dist/batch.js",
   "types": "./dist/types.d.ts",
-  "files": ["dist"],
-  "scripts": {"build": "tsc", "clean": "rm -rf dist"},
-  "peerDependencies": {"@0xshariq/voxa-core": "workspace:*"},
-  "publishConfig": {"access": "public"}
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

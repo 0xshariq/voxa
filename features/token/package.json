@@ -1,5 +1,5 @@
 {
-    "name": "@0xshariq/voxa-token",
+    "name": "@voxa-http/voxa-token",
     "version": "1.0.1",
     "description": "Token management for Voxa HTTP Client",
     "keywords": [
@@ -28,9 +28,6 @@
     "scripts": {
         "build": "tsc",
         "clean": "rm -rf dist"
-    },
-    "peerDependencies": {
-        "@0xshariq/voxa-core": "workspace:*"
     },
     "publishConfig": {
         "access": "public"

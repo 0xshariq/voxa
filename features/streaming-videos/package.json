@@ -1,5 +1,5 @@
 {
-  "name": "@0xshariq/voxa-streaming-videos",
+  "name": "@voxa-http/voxa-streaming-videos",
   "version": "1.0.2",
   "description": "Video streaming upload/download features for Voxa HTTP Client",
   "keywords": [
@@ -30,9 +30,6 @@
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist"
-  },
-  "peerDependencies": {
-    "@0xshariq/voxa-core": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

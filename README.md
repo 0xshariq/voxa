@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@0xshariq/voxa-core"><img src="https://img.shields.io/npm/v/@0xshariq/voxa-core.svg" alt="npm version"></a>
+  <a href="https://www.npmjs.com/package/@voxa-http/voxa-core"><img src="https://img.shields.io/npm/v/@voxa-http/voxa-core.svg" alt="npm version"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
 </p>
 
@@ -19,17 +19,17 @@ Voxa isn't just another HTTP client—it's a **complete request management syste
 
 Voxa is split into multiple packages:
 
-- **@0xshariq/voxa-core** (~140KB) - Essential HTTP client with caching, retry, queue, rate limiting, and deduplication
-- **@0xshariq/voxa-streaming-images** - Image streaming with progress tracking
-- **@0xshariq/voxa-streaming-videos** - Video streaming with progress tracking
-- **@0xshariq/voxa-http2** - HTTP/2 Server Push support
-- **@0xshariq/voxa-graphql** - GraphQL query support
-- **@0xshariq/voxa-batch** - Request batching
-- **@0xshariq/voxa-offline** - Offline queue management
-- **@0xshariq/voxa-circuit-breaker** - Circuit breaker pattern
-- **@0xshariq/voxa-token** - OAuth/JWT token management
-- **@0xshariq/voxa-metrics** - Performance metrics tracking
-- **@0xshariq/voxa-cancel** - Advanced request cancellation
+- **@voxa-http/voxa** (~140KB) - Essential HTTP client with caching, retry, queue, rate limiting, and deduplication
+- **@voxa-http/voxa-streaming-images** - Image streaming with progress tracking
+- **@voxa-http/voxa-streaming-videos** - Video streaming with progress tracking
+- **@voxa-http/voxa-http2** - HTTP/2 Server Push support
+- **@voxa-http/voxa-graphql** - GraphQL query support
+- **@voxa-http/voxa-batch** - Request batching
+- **@voxa-http/voxa-offline** - Offline queue management
+- **@voxa-http/voxa-circuit-breaker** - Circuit breaker pattern
+- **@voxa-http/voxa-token** - OAuth/JWT token management
+- **@voxa-http/voxa-metrics** - Performance metrics tracking
+- **@voxa-http/voxa-cancel** - Advanced request cancellation
 
 ---
 
@@ -72,7 +72,7 @@ Voxa is split into multiple packages:
 
 ---
 
-## ✨ Core Features (in @0xshariq/voxa-core)
+## ✨ Core Features (in @voxa-http/voxa)
 
 - 🔄 **Automatic Retry** (exponential backoff)
 - 💾 **Response Caching** (memory/file/custom)
@@ -93,16 +93,16 @@ Voxa is split into multiple packages:
 
 Install only what you need:
 
-- 📹 **@0xshariq/voxa-streaming-images** - Image upload/download with progress
-- 🎬 **@0xshariq/voxa-streaming-videos** - Video upload/download with progress
-- ⚡ **@0xshariq/voxa-http2** - HTTP/2 Server Push
-- 🔍 **@0xshariq/voxa-graphql** - GraphQL queries
-- 📦 **@0xshariq/voxa-batch** - Request batching
-- 📴 **@0xshariq/voxa-offline** - Offline queue
-- 🔌 **@0xshariq/voxa-circuit-breaker** - Circuit breaker pattern
-- 🎫 **@0xshariq/voxa-token** - OAuth/JWT token management
-- 📊 **@0xshariq/voxa-metrics** - Performance metrics
-- 🛑 **@0xshariq/voxa-cancel** - Advanced cancellation
+- 📹 **@voxa-http/voxa-streaming-images** - Image upload/download with progress
+- 🎬 **@voxa-http/voxa-streaming-videos** - Video upload/download with progress
+- ⚡ **@voxa-http/voxa-http2** - HTTP/2 Server Push
+- 🔍 **@voxa-http/voxa-graphql** - GraphQL queries
+- 📦 **@voxa-http/voxa-batch** - Request batching
+- 📴 **@voxa-http/voxa-offline** - Offline queue
+- 🔌 **@voxa-http/voxa-circuit-breaker** - Circuit breaker pattern
+- 🎫 **@voxa-http/voxa-token** - OAuth/JWT token management
+- 📊 **@voxa-http/voxa-metrics** - Performance metrics
+- 🛑 **@voxa-http/voxa-cancel** - Advanced cancellation
 
 ---
 
@@ -111,18 +111,18 @@ Install only what you need:
 ### Core Package (Required)
 
 ```bash
-npm install @0xshariq/voxa-core
+npm install @voxa-http/voxa
 # or
-pnpm install @0xshariq/voxa-core
+pnpm install @voxa-http/voxa
 # or
-yarn add @0xshariq/voxa-core
+yarn add @voxa-http/voxa
 ```
 
 ### Feature Packages (Optional)
 
 ```bash
 # Install only the features you need
-npm install @0xshariq/voxa-graphql @0xshariq/voxa-streaming-images
+npm install @voxa-http/voxa-graphql @voxa-http/voxa-streaming-images
 ```
 
 ---
@@ -132,7 +132,7 @@ npm install @0xshariq/voxa-graphql @0xshariq/voxa-streaming-images
 ### Basic Usage (Core Only)
 
 ```typescript
-import { Voxa } from "@0xshariq/voxa-core";
+import { Voxa } from "@voxa-http/voxa";
 
 const client = new Voxa({
   baseURL: "https://api.example.com",
@@ -154,10 +154,10 @@ console.log(response.data);
 ### With Feature Packages
 
 ```typescript
-import { Voxa } from "@0xshariq/voxa-core";
-import "@0xshariq/voxa-graphql"; // Types auto-merge
-import "@0xshariq/voxa-batch";
-import { StreamingImageManager } from "@0xshariq/voxa-streaming-images";
+import { Voxa } from "@voxa-http/voxa";
+import "@voxa-http/voxa-graphql"; // Types auto-merge
+import "@voxa-http/voxa-batch";
+import { StreamingImageManager } from "@voxa-http/voxa-streaming-images";
 
 const client = new Voxa({
   baseURL: "https://api.example.com",
@@ -184,7 +184,7 @@ await imageManager.upload("/upload", imageFile, {}, (sent, total) => {
 ### Complete Instance Example
 
 ```typescript
-import { Voxa } from "@0xshariq/voxa-core";
+import { Voxa } from "@voxa-http/voxa";
 
 const api = new Voxa({
   baseURL: "https://api.example.com",
@@ -428,7 +428,7 @@ console.log(response.metadata); // includes your custom fields
 Create a client instance to reuse configuration and advanced features:
 
 ```typescript
-import voxa from "@0xshariq/voxa";
+import voxa from "@voxa-http/voxa";
 
 const api = voxa.create({
   baseURL: "https://api.example.com",
@@ -453,7 +453,7 @@ await api.delete("/users/1");
 Call static methods directly for one-off requests:
 
 ```typescript
-import { Voxa } from "@0xshariq/voxa";
+import { Voxa } from "@voxa-http/voxa";
 
 const response = await Voxa.get<User>("https://api.example.com/users/1");
 console.log(response.data);
@@ -487,7 +487,7 @@ const user: User = await response.json();
 ### Streaming Upload/Download
 
 ```typescript
-import { StreamingImageManager, StreamingVideoManager } from "@0xshariq/voxa";
+import { StreamingImageManager, StreamingVideoManager } from "@voxa-http/voxa";
 
 // Upload image with progress tracking
 const streamingImages = new StreamingImageManager({});
@@ -775,7 +775,7 @@ MIT © [Sharique Chaudhary](https://github.com/0xshariq)
 ## 🔗 Links
 
 - [GitHub Repository](https://github.com/0xshariq/voxa)
-- [npm Package](https://www.npmjs.com/package/@0xshariq/voxa)
+- [npm Package](https://www.npmjs.com/package/@voxa-http/voxa)
 - [Issue Tracker](https://github.com/0xshariq/voxa/issues)
 
 ---

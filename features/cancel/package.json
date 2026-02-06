@@ -1,5 +1,5 @@
 {
-    "name": "@0xshariq/voxa-cancel",
+    "name": "@voxa-http/voxa-cancel",
     "version": "1.0.0",
     "description": "Request cancellation for Voxa HTTP Client",
     "keywords": [
@@ -27,9 +27,6 @@
     "scripts": {
         "build": "tsc",
         "clean": "rm -rf dist"
-    },
-    "peerDependencies": {
-        "@0xshariq/voxa-core": "workspace:*"
     },
     "publishConfig": {
         "access": "public"

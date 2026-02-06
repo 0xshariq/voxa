@@ -1,5 +1,5 @@
 {
-  "name": "@0xshariq/voxa-streaming-images",
+  "name": "@voxa-http/voxa-streaming-images",
   "version": "1.0.2",
   "description": "Image streaming upload/download features for Voxa HTTP Client",
   "keywords": [
@@ -30,9 +30,6 @@
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist"
-  },
-  "peerDependencies": {
-    "@0xshariq/voxa-core": "workspace:*"
   },
   "publishConfig": {
     "access": "public"
